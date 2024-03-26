@@ -6,5 +6,5 @@ Código simples.
 ## Critérios usados para o jogo.
 - Não permita jogadas em lugares marcados.
 - Verifique a cada jogada se terminou.
-- Quem ganou ou se empatou.
+- Quem ganhou ou se empatou.
 - Exiba o resultado.
