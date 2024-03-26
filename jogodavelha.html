@@ -1,81 +1,38 @@
 <!doctype html>
 <html> 
-    <!--CRIE UM JOGO DA VELHA , NÃO PERMITA JOGADAS EM LUGARES MARCADOS
-    VERIFIQUE A CADA JOGADA SE TERMINOU E QUEM GANHOU OU SE EMPATOU E 
-    MOSTRE EM UM ALERT O RESULTADO -->
     <head>
         <meta charset="UTF-8">
-        <title>JOGO DA VELHA</title>
+        <title>Jogo da Velha</title>
         <style>
-        #jogador1, #jogador2{ 
+            #jogador1, #jogador2{ 
             color:rgb(10, 1, 1);font-weight: bold;
             } 
-        h1{
-            color:rgb(15, 15, 153);
-        }
-        #result{
-            color:rgb(13, 83, 28);font-weight: bold;
-        }
-        table 
-        {
-            border-style: groove;
-                
-        }
-        td 
-        {
-            width: 100px; 
-            height: 100px;
-            text-align: center;
-            font-size: 24px;
-            border: 4px solid rgb(237, 7, 7);
-            
-        }
+            h1{
+                color:rgb(15, 15, 153);
+            }
+            #result{
+                color:rgb(13, 83, 28);font-weight: bold;
+            }
+            table{
+                border-style: groove;
+            }
+            td {
+                width: 100px; 
+                height: 100px;
+                text-align: center;
+                font-size: 24px;
+                border: 4px solid black;
+            }
         </style>
     </head>
     <body>
-        <h1>JOGO DA VELHA</h1>
-        <br>
-        <label>JOGADOR X:</label>
-        <input type="text" id="jogador1" required>
-        <br><br>
-  
-        <label>JOGADOR O:</label>
-        <input type="text" id="jogador2" required>
-        <br><br><br>
-
-        <table>
-            <tr>
-                <td onclick="resultado(0,0)" id="I00"></td>
-                <td onclick="resultado(0,1)" id="I01"></td>
-                <td onclick="resultado(0,2)" id="I02"></td>
-
-            </tr>
-            <tr>
-                <td onclick="resultado(1,0)" id="I10"></td>
-                <td onclick="resultado(1,1)" id="I11"></td>
-                <td onclick="resultado(1,2)" id="I12"></td>
-            </tr>
-            <tr>
-                <td onclick="resultado(2,0)" id="I20"></td>
-                <td onclick="resultado(2,1)" id="I21"></td>
-                <td onclick="resultado(2,2)" id="I22"></td>
-            </tr>
-
-        </table>
-        <br><br><br>
-
-        <div id="result"></div>
-
         <script>
             var mat = [['8','8','8'],
                       ['8','8','8'],
                       ['8','8','8']]
-
             var jogada = 1;
             var fim=false;
-
-            function resultado(lin,col)
-            {
+            function resultado(lin,col){
                 if(mat[lin][col]=='8'&& fim==false)
                 {
                     if(jogada%2!=0)
@@ -92,90 +49,94 @@
                     verificarcoluna();
                     verificardiagonal();
                     verificartransversal(); 
-                    if(jogada==11)
-                    {
+                    if(jogada==11){
                         verificarempate();
                     }                   
                 }
-            
             }
-
-            function verificarlinha()
-            {
-                for (var i = 0; i < 3; i++)
-                {
-                
+            function verificarlinha(){
+                for (var i = 0; i < 3; i++){
                     if (mat[i][0] === mat[i][1] && mat[i][1] === mat[i][2] && mat[i][0] !== '8')
                     {
                         mostrarvencedor(mat[i][0]);
                         return;
-                    }
-                   
-                                   
+                    } 
                 }
-
             }
             function verificarcoluna()
             {
-                for (var i = 0; i < 3; i++)
-                {
+                for (var i = 0; i < 3; i++){
                 
                     if (mat[0][i] === mat[1][i] && mat[1][i] === mat[2][i] && mat[0][i] !== '8')
                     {
                         mostrarvencedor(mat[0][i]);
                         return;
-                    }
-                   
+                    }    
                 }
-
             }
-            function verificardiagonal()
-            {
-                for (var i = 0; i < 3; i++)
-                {
-                
+            function verificardiagonal(){
+                for (var i = 0; i < 3; i++){
+
                     if (mat[0][0] === mat[1][1] && mat[1][1] === mat[2][2] && mat[2][2] !== '8')
                     {
                         mostrarvencedor(mat[0][0]);
                     return;
                     }
-                
                 }
-
             }
-            function verificartransversal()
-            {
+            function verificartransversal(){
                 for (var i = 0; i < 3; i++)
                 {
-                
                     if (mat[0][2] === mat[1][1] && mat[1][1] === mat[2][0] && mat[2][0] !== '8')
                     {
                         mostrarvencedor(mat[0][2]);
-                    return;
+                        return;
                     }
-                
                 }
-
             }
-            function mostrarvencedor(vencedor)
-            {
+            function mostrarvencedor(vencedor){
                 fim=true;
                 var vencedor;
-              if(vencedor == 'X')
-              {
-               vencedor=document.getElementById("jogador1").value;
-                
-                } 
-              else
-              {
+              if(vencedor == 'X'){
+                vencedor=document.getElementById("jogador1").value;            
+            } 
+              else{
                 vencedor=document.getElementById("jogador2").value;
-              }
-              document.getElementById("result").innerHTML = "VITÓRIA DO VENCEDOR:  " + vencedor;
             }
-            function verificarempate()
-            {
+                document.getElementById("result").innerHTML = "Parabéns!!!!" + vencedor + "você venceu";
+            }
+            function verificarempate(){
                 document.getElementById("result").innerHTML = "NÃO TEM VENCEDOR !!!";
             }
         </script>
+        <h1>Jogo da Velha</h1>
+        <br>
+        <label>Nome do jogador X:</label>
+        <input type="text" id="jogador1" required>
+        <br><br>
+        <label>Nome do jogador O:</label>
+        <input type="text" id="jogador2" required>
+        <br><br><br>
+
+        <table>
+            <tr>
+                <td onclick="resultado(0,0)" id="I00"></td>
+                <td onclick="resultado(0,1)" id="I01"></td>
+                <td onclick="resultado(0,2)" id="I02"></td>
+            </tr>
+            <tr>
+                <td onclick="resultado(1,0)" id="I10"></td>
+                <td onclick="resultado(1,1)" id="I11"></td>
+                <td onclick="resultado(1,2)" id="I12"></td>
+            </tr>
+            <tr>
+                <td onclick="resultado(2,0)" id="I20"></td>
+                <td onclick="resultado(2,1)" id="I21"></td>
+                <td onclick="resultado(2,2)" id="I22"></td>
+            </tr>
+        </table>
+        <br><br><br>
+
+        <div id="result"></div>
     </body>
 </html>
